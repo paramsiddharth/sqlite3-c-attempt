@@ -46,7 +46,24 @@ int main(int argc, char* argv[]) {
 
 	CHECK_SUCCESS
 
-	// while (true)
+	char* people[] = {
+		"Param",
+		"Mukul",
+		"Ritesh",
+		"Yaswanth"
+	};
+	for (int i = 0; i < 4; i++) {
+		success = sqlite3_exec(db, (
+			sqlite3_mprintf(
+				"INSERT INTO people (name) VALUES\n"
+				"('%q');",
+				people[i]
+			)
+		), NULL, 0, &err);
+		sqlite3_free(err);
+
+		CHECK_SUCCESS
+	}
 
 	sqlite3_close(db);
 

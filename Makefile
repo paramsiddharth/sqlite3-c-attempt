@@ -16,9 +16,9 @@ execext ?=
 build: $(filename)$(execext)
 
 $(filename)$(execext):
-	@gcc -o $(filename)$(execext) \
-		-lsqlite3 \
-		$(filename).c
+	gcc -o $(filename)$(execext) \
+		$(filename).c \
+		-lsqlite3
 
 run: build
 	@.$(separator)$(filename)
